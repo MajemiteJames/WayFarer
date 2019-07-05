@@ -1,32 +1,32 @@
-import { check, validationResult } from "express-validator/check";
+import { check, validationResult } from 'express-validator/check';
 
 const userInput = [
-  check("email")
+  check('email')
     .isEmail()
-    .withMessage("input a valid email address"),
-  check("email")
+    .withMessage('input a valid email address'),
+  check('email')
     .not()
     .isEmpty()
-    .withMessage("input email address"),
-  check("password")
+    .withMessage('input email address'),
+  check('password')
     .not()
     .isEmpty()
-    .withMessage("input password"),
+    .withMessage('input password'),
   (req, res, next) => {
     const messages = [];
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      errors.array().forEach(err => {
+      errors.array().forEach((err) => {
         messages.push(err.msg);
       });
 
       return res.status(422).json({
         status: 422,
-        errors: messages
+        errors: messages,
       });
     }
     return next();
-  }
+  },
 ];
 
 export default userInput;

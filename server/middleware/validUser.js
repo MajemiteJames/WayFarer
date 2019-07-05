@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -17,10 +17,10 @@ const ValidUser = {
 
   generateToken(id) {
     const token = jwt.sign({ userId: id }, process.env.SECRET, {
-      expiresIn: "30d"
+      expiresIn: '30d',
     });
     return token;
-  }
+  },
 };
 
 export default ValidUser;
