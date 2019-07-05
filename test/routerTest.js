@@ -7,20 +7,6 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Handle incoming requests on routes', () => {
-  it('should return 200 and success message for the / route', (done) => {
-    chai
-      .request(app)
-      .get('/')
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('status');
-        expect(res.body.status).to.equal(200);
-        expect(res.body).to.have.property('message');
-        done(err);
-      });
-  });
-
   it('should return a 404 for all invalid routes', (done) => {
     chai
       .request(app)
@@ -31,6 +17,19 @@ describe('Handle incoming requests on routes', () => {
         expect(res.body).to.have.property('status');
         expect(res.body.status).to.equal(404);
         expect(res.body).to.have.property('error');
+        done(err);
+      });
+  });
+  it('should return 200 and success message for the / route', (done) => {
+    chai
+      .request(app)
+      .get('/')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('status');
+        expect(res.body.status).to.equal(200);
+        expect(res.body).to.have.property('message');
         done(err);
       });
   });
