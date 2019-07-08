@@ -75,12 +75,12 @@ const User = {
       if (!rows[0]) {
         return res.status(403).send({
           status: 403,
-          message: 'The credentials you provided is incorrect',
+          message: 'User with that email does not exist',
         });
       }
       if (!Helper.comparePassword(rows[0].password, req.body.password)) {
         return res.status(403).send({
-          message: 'The credentials you provided is incorrect',
+          message: 'Incorrect password',
         });
       }
       const token = Helper.generateToken(rows[0].id);
