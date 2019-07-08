@@ -19,7 +19,7 @@ it('Should register a new user', (done) => {
   const newUser = {
     firstName: 'Severus',
     lastName: 'Snape',
-    email: 'snape16@hogwarts2.com',
+    email: 'snape16@hogwarts5.com',
     password: 'mischiefmanaged',
   };
   chai
@@ -104,7 +104,7 @@ describe('user sign in', () => {
   it('should successfully sign in a user', async () => {
     const response = await server.post('/api/v1/signin')
       .send({
-        email: 'snape16@hogwarts1.com',
+        email: 'snape16@hogwarts.com',
         password: 'mischiefmanaged',
       });
     expect(response.status).to.equal(200);
@@ -117,7 +117,7 @@ describe('user sign in', () => {
   it('should successfully sign in a user', async () => {
     const response = await server.post('/api/v1/signin')
       .send({
-        email: 'snape16@hogwarts1.com',
+        email: 'snape16@hogwarts.com',
         password: 'mischiefmanaged',
       });
     expect(response.status).to.equal(200);
@@ -152,7 +152,8 @@ describe('user sign in', () => {
         password: 'lsfbeyiw',
       });
     expect(response.status).to.equal(400);
-    expect(response.body.message).to.equal('User with that email does not exist');
+    expect(response.body)
+      .to.have.property('message');
   });
 });
 
@@ -164,6 +165,7 @@ describe('user sign in', () => {
         password: 'ballerz',
       });
     expect(response.status).to.equal(400);
-    expect(response.body.message).to.equal('Incorrect password');
+    expect(response.body)
+      .to.have.property('message');
   });
 });
