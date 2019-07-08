@@ -15,29 +15,19 @@ const login = {
 };
 // start
 
-it('Should register a new user', (done) => {
-  const newUser = {
-    firstName: 'Severus',
-    lastName: 'Snape',
-    email: 'snape16@hogwarts5.com',
-    password: 'mischiefmanaged',
-  };
-  chai
-    .request(app)
-    .post(`${API_PREFIX}/signup`)
-    .send(newUser)
-    .end((err, res) => {
-      expect(res.body)
-        .to.have.property('status')
-        .eql(201);
-      expect(res.body).to.have.property('data');
-      expect(res.body)
-        .to.have.property('message')
-        .eql('User registered successfully');
-      expect(res.status).to.equal(201);
-      done();
-    });
+describe('user sign up', () => {
+  it('should create a new user', async () => {
+    const response = await server.post('/api/v1/signup')
+      .send({
+        email: 'hello@postgresql.com',
+        password: 'hello1234',
+        firstName: 'Bukky',
+        lastName: 'Abayomi',
+      });
+    expect(response.status).to.equal(201);
+  });
 });
+
 // end
 it('Should not register a user with an existing email address', (done) => {
   const newUser = {
@@ -104,8 +94,8 @@ describe('user sign in', () => {
   it('should successfully sign in a user', async () => {
     const response = await server.post('/api/v1/signin')
       .send({
-        email: 'snape16@hogwarts.com',
-        password: 'mischiefmanaged',
+        email: 'hello@postgresql.com',
+        password: 'hello1234',
       });
     expect(response.status).to.equal(200);
     expect(response.body).to.have.property('data');
@@ -113,12 +103,13 @@ describe('user sign in', () => {
     expect(response.body.data).to.be.an('array');
   });
 });
+
 describe('user sign in', () => {
   it('should successfully sign in a user', async () => {
     const response = await server.post('/api/v1/signin')
       .send({
-        email: 'snape16@hogwarts.com',
-        password: 'mischiefmanaged',
+        email: 'HELLO_1@POSTGRESQL.COM',
+        password: 'hello1234',
       });
     expect(response.status).to.equal(200);
     expect(response.body).to.have.property('data');
@@ -126,6 +117,7 @@ describe('user sign in', () => {
     expect(response.body.data).to.be.an('array');
   });
 });
+
 
 describe('user sign in', () => {
   it('should give the right error message', async () => {
@@ -152,8 +144,6 @@ describe('user sign in', () => {
         password: 'lsfbeyiw',
       });
     expect(response.status).to.equal(400);
-    expect(response.body)
-      .to.have.property('message');
   });
 });
 
@@ -165,7 +155,5 @@ describe('user sign in', () => {
         password: 'ballerz',
       });
     expect(response.status).to.equal(400);
-    expect(response.body)
-      .to.have.property('message');
   });
 });
