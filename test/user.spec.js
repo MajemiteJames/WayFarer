@@ -19,9 +19,8 @@ it('Should register a new user', (done) => {
   const newUser = {
     firstName: 'Severus',
     lastName: 'Snape',
-    email: 'snape16@hogwarts1.com',
+    email: 'snape16@hogwarts2.com',
     password: 'mischiefmanaged',
-    password2: 'mischiefmanaged',
   };
   chai
     .request(app)
@@ -105,8 +104,8 @@ describe('user sign in', () => {
   it('should successfully sign in a user', async () => {
     const response = await server.post('/api/v1/signin')
       .send({
-        email: 'hello@postgresql.com',
-        password: 'hello1234',
+        email: 'snape16@hogwarts1.com',
+        password: 'mischiefmanaged',
       });
     expect(response.status).to.equal(200);
     expect(response.body).to.have.property('data');
@@ -118,8 +117,8 @@ describe('user sign in', () => {
   it('should successfully sign in a user', async () => {
     const response = await server.post('/api/v1/signin')
       .send({
-        email: 'HELLO_1@POSTGRESQL.COM',
-        password: 'hello1234',
+        email: 'snape16@hogwarts1.com',
+        password: 'mischiefmanaged',
       });
     expect(response.status).to.equal(200);
     expect(response.body).to.have.property('data');
@@ -152,7 +151,7 @@ describe('user sign in', () => {
         email: 'sheggy1@andela.com',
         password: 'lsfbeyiw',
       });
-    expect(response.status).to.equal(403);
+    expect(response.status).to.equal(400);
     expect(response.body.message).to.equal('User with that email does not exist');
   });
 });
@@ -164,7 +163,7 @@ describe('user sign in', () => {
         email: 'hello@postgresql.com',
         password: 'ballerz',
       });
-    expect(response.status).to.equal(403);
+    expect(response.status).to.equal(400);
     expect(response.body.message).to.equal('Incorrect password');
   });
 });
