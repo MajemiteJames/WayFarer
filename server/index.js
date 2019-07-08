@@ -1,14 +1,20 @@
 import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import router from './routes/index';
+import '@babel/polyfill';
 
 const app = express();
-const PORT = process.env.PORT || 8080;
 
-app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: true,
-  }),
-);
+// Parse incoming requests data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false,
+}));
+app.use('/api/v1', router);
+
+
+const PORT = process.env.PORT || 4040;
 
 app.get('/', (req, res) => res.status(200).json({
   status: 200,
