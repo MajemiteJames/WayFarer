@@ -1,5 +1,5 @@
 import moment from 'moment';
-import db from '../db';
+import db from '../models/db';
 import Helper from '../helper/helper';
 import '@babel/polyfill';
 

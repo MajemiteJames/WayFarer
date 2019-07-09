@@ -1,4 +1,4 @@
-import db from '../db';
+import db from '../models/db';
 
 const users = `CREATE TABLE IF NOT EXISTS users(
     id SERIAL PRIMARY KEY,
