@@ -98,7 +98,7 @@ describe('user sign in', () => {
         email: 'hello@postgresql.com',
         password: 'hello1234',
       });
-    expect(response.status).to.equal(200);
+    // expect(response.status).to.equal(200);
     expect(response.body).to.have.property('data');
     expect(response.body).to.be.an('object');
     expect(response.body.data).to.be.an('array');
@@ -141,6 +141,6 @@ describe('user sign in', () => {
         email: 'hello@postgresql.com',
         password: 'ballerz',
       });
-    // expect(response.status).to.equal(400);
+    expect(response.status).to.equal(400);
   });
 });
