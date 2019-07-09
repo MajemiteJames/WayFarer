@@ -1,5 +1,5 @@
 import moment from 'moment';
-import db from '../db';
+import db from '../models/db';
 import Helper from '../helper/helper';
 import '@babel/polyfill';
 
@@ -73,14 +73,14 @@ const User = {
         rows,
       } = await db.query(text, [req.body.email]);
       if (!rows[0]) {
-        return res.status(403).send({
-          status: 403,
-          message: 'The credentials you provided is incorrect',
+        return res.status(400).send({
+          status: 400,
+          message: 'User with that email does not exist',
         });
       }
       if (!Helper.comparePassword(rows[0].password, req.body.password)) {
-        return res.status(403).send({
-          message: 'The credentials you provided is incorrect',
+        return res.status(400).send({
+          message: 'Incorrect password',
         });
       }
       const token = Helper.generateToken(rows[0].id);
