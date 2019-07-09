@@ -19,12 +19,13 @@ describe('user sign up', () => {
   it('should create a new user', async () => {
     const response = await server.post('/api/v1/signup')
       .send({
-        email: 'hello@postgresql.com',
+        email: 'hello@postgresql1.com',
         password: 'hello1234',
         firstName: 'Bukky',
         lastName: 'Abayomi',
       });
     expect(response.status).to.equal(201);
+    console.log(response);
   });
 });
 
@@ -95,20 +96,6 @@ describe('user sign in', () => {
     const response = await server.post('/api/v1/signin')
       .send({
         email: 'hello@postgresql.com',
-        password: 'hello1234',
-      });
-    expect(response.status).to.equal(200);
-    expect(response.body).to.have.property('data');
-    expect(response.body).to.be.an('object');
-    expect(response.body.data).to.be.an('array');
-  });
-});
-
-describe('user sign in', () => {
-  it('should successfully sign in a user', async () => {
-    const response = await server.post('/api/v1/signin')
-      .send({
-        email: 'HELLO_1@POSTGRESQL.COM',
         password: 'hello1234',
       });
     expect(response.status).to.equal(200);
