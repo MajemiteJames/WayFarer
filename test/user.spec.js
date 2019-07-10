@@ -25,7 +25,6 @@ describe('user sign up', () => {
         lastName: 'Abayomi',
       });
     // expect(response.status).to.equal(201);
-    console.log(response);
   });
 });
 
