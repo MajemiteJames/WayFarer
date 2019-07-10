@@ -12,7 +12,7 @@ const User = {
    * Create A User
    * @param {object} req
    * @param {object} res
-   * @returns {object} reflection object
+   * @returns {object} users object
    */
   async create(req, res) {
     const hashPassword = Helper.hashPassword(req.body.password);
