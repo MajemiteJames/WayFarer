@@ -94,7 +94,7 @@ describe('User', () => {
       }
     });
   });
-  
+
 
   describe('user sign up', () => {
     it('should give the corresponding error messages', async () => {
