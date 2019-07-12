@@ -7,11 +7,13 @@ import '@babel/polyfill';
 const app = express();
 
 // Parse incoming requests data
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false,
 }));
 
+app.use('/api/v1/', router);
 
 const PORT = process.env.PORT || 5000;
 
