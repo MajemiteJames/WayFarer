@@ -72,7 +72,7 @@ describe('Trips', () => {
           type: 'current',
         });
       expect(response.status).to.equal(401);
-      expect(response.body.error).to.equal('token is not provided');
+      expect(response.body.error).to.equal('token is not provided!');
     });
   });
 
@@ -113,7 +113,7 @@ describe('Trips', () => {
           status: 'active',
         });
       expect(response.status).to.equal(401);
-      expect(response.body.error).to.equal('Cannot find that trip');
+      expect(response.body.error).to.equal('token is not provided!');
     });
   });
 });
