@@ -72,7 +72,7 @@ describe('Trips', () => {
           type: 'current',
         });
       expect(response.status).to.equal(401);
-      expect(response.body.error).to.equal('invalid token provided');
+      expect(response.body.error).to.equal('token is not provided');
     });
   });
 
@@ -85,7 +85,7 @@ describe('Trips', () => {
         .send({
           type: '',
         });
-      expect(response.status).to.equal(400);
+      expect(response.status).to.equal(401);
       const errorMessages = response.body.errors;
     });
   });
@@ -112,7 +112,7 @@ describe('Trips', () => {
         .send({
           status: 'active',
         });
-      expect(response.status).to.equal(404);
+      expect(response.status).to.equal(401);
       expect(response.body.error).to.equal('Cannot find that trip');
     });
   });
