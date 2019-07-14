@@ -82,14 +82,11 @@ describe('Trips', () => {
     it('should give the right error messages', async () => {
       const loginResponse = await server.post('/api/v1/auth/signin')
         .send(login);
-      const {
-        token,
-      } = loginResponse.body.data[0];
       const response = await server.post('/api/v1/trips')
         .send({
           type: '',
         })
-        .set('x-access-token', token);
+        .set('x-access-token');
       expect(response.status).to.equal(400);
       const errorMessages = response.body.errors;
     });
@@ -100,12 +97,9 @@ describe('Trips', () => {
     it('should give the right error message', async () => {
       const loginResponse = await server.post('/api/v1/auth/signin')
         .send(login);
-      const {
-        token,
-      } = loginResponse.body.data[0];
       const response = await server
         .get('/api/v1/trip/00123456')
-        .set('x-access-token', token);
+        .set('x-access-token');
       expect(response.status).to.equal(404);
       expect(response.body.error).to.equal('Endpoint does not exist');
       expect(response.body).to.be.an('object');
@@ -117,14 +111,11 @@ describe('Trips', () => {
     it('should update trip status', async () => {
       const loginResponse = await server.post('/api/v1/auth/signin')
         .send(login);
-      const {
-        token,
-      } = loginResponse.body.data[0];
       const response = await server.patch('/api/v1/trips/00112233')
         .send({
           status: 'active',
         })
-        .set('x-access-token', token);
+        .set('x-access-token');
       expect(response.status).to.equal(404);
       expect(response.body.error).to.equal('Cannot find that trip');
     });
