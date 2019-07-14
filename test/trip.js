@@ -70,8 +70,7 @@ describe('Trips', () => {
       const response = await server.post('/api/v1/trips')
         .send({
           type: 'current',
-        })
-        .set('x-access-token', 'fjhghhjklkjhdjgjlkgrdth');
+        });
       expect(response.status).to.equal(401);
       expect(response.body.error).to.equal('invalid token provided');
     });
@@ -85,8 +84,7 @@ describe('Trips', () => {
       const response = await server.post('/api/v1/trips')
         .send({
           type: '',
-        })
-        .set('x-access-token');
+        });
       expect(response.status).to.equal(400);
       const errorMessages = response.body.errors;
     });
@@ -98,8 +96,7 @@ describe('Trips', () => {
       const loginResponse = await server.post('/api/v1/auth/signin')
         .send(login);
       const response = await server
-        .get('/api/v1/trip/00123456')
-        .set('x-access-token');
+        .get('/api/v1/trip/00123456');
       expect(response.status).to.equal(404);
       expect(response.body.error).to.equal('Endpoint does not exist');
       expect(response.body).to.be.an('object');
@@ -114,8 +111,7 @@ describe('Trips', () => {
       const response = await server.patch('/api/v1/trips/00112233')
         .send({
           status: 'active',
-        })
-        .set('x-access-token');
+        });
       expect(response.status).to.equal(404);
       expect(response.body.error).to.equal('Cannot find that trip');
     });
