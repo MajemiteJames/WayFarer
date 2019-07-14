@@ -78,7 +78,7 @@ describe('Trips', () => {
   });
 
 
-  describe('create new account', () => {
+  describe('create new trip', () => {
     it('should give the right error messages', async () => {
       const loginResponse = await server.post('/api/v1/auth/signin')
         .send(login);
@@ -96,7 +96,7 @@ describe('Trips', () => {
   });
 
 
-  describe('display account details', () => {
+  describe('display trip details', () => {
     it('should give the right error message', async () => {
       const loginResponse = await server.post('/api/v1/auth/signin')
         .send(login);
@@ -113,8 +113,8 @@ describe('Trips', () => {
   });
 
 
-  describe('update account status', () => {
-    it('should update account status', async () => {
+  describe('update trip status', () => {
+    it('should update trip status', async () => {
       const loginResponse = await server.post('/api/v1/auth/signin')
         .send(login);
       const {
