@@ -36,6 +36,12 @@ class Bus {
         message: 'Please enter a valid plate number',
       });
     }
+    if (!request.user.is_admin) {
+      return response.status(401).json({
+        status: 401,
+        error: 'You do not have the authority to perform that operation',
+      });
+    }
     const text = `INSERT INTO buses(number_plate, manufacturer, model, year, capacity, status)
     VALUES($1, $2, $3, $4, $5, $6) returning * ;
     `;

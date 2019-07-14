@@ -1,10 +1,11 @@
 import express from 'express';
 import Bus from '../controllers/Bus';
+import Auth from '../middleware/validators/auth';
 
 const BusRouter = express.Router();
 
-BusRouter.post('', Bus.createBus);
-BusRouter.get('/', Bus.getBuses);
-BusRouter.patch('/:id', Bus.updateBus);
+BusRouter.post('', Auth, Bus.createBus);
+BusRouter.get('/', Auth, Bus.getBuses);
+BusRouter.patch('/:id', Auth, Bus.updateBus);
 
 export default BusRouter;
