@@ -49,13 +49,6 @@ const login2 = {
 };
 
 describe('Bus', () => {
-  before('drop bus table and then re-create it', async () => {
-    await server.post('/api/v1/auth/signup')
-      .send(signup);
-    await server.post('/api/v1/auth/signup')
-      .send(signup2);
-  });
-
   describe('create new bus', () => {
     it('should indicate that token is needed', async () => {
       const response = await server.post('/api/v1/bus')
