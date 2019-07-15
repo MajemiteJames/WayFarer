@@ -14,7 +14,7 @@ class Trips {
    * @param {object} request
    * @param {object} response the response body
    * @returns response
-   * @memberof Accounts
+   * @memberof Trips
    */
   static async getTrips(request, response) {
     try {
