@@ -17,10 +17,10 @@ const trips = `CREATE TABLE IF NOT EXISTS trips(
     bus_id INT,
     fare NUMERIC NOT NULL,
     FOREIGN KEY(bus_id) REFERENCES buses(id) ON DELETE SET NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );`;
 
-const buses = `CREATE TABLE IF NOT EXISTS transactions(
+const buses = `CREATE TABLE IF NOT EXISTS buses(
   id SERIAL PRIMARY KEY,
   number_plate VARCHAR UNIQUE NOT NULL,
   manufacturer VARCHAR NOT NULL,
@@ -31,25 +31,32 @@ const buses = `CREATE TABLE IF NOT EXISTS transactions(
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );`;
 
-db.query(users, (error) => {
+const bookings = `CREATE TABLE IF NOT EXISTS transactions(
+    id serial PRIMARY KEY,
+    seat_number integer NOT NULL,
+    trip_id integer NOT NULL,
+    user_id integer NOT NULL,
+    created_on date NOT NULL
+);`;
+db.query(`${users} ${buses} ${trips}`, (error) => {
   if (error) {
     return console.error('error creating users table');
   }
   console.log('users table created successfully');
 });
 
-db.query(trips, (error) => {
-  if (error) {
-    return console.error('error creating accounts table');
-  }
-  console.log('accounts table created successfully');
-});
+// db.query(trips, (error) => {
+//   if (error) {
+//     return console.error('error creating accounts table');
+//   }
+//   console.log('accounts table created successfully');
+// });
 
-db.query(buses, (error) => {
-  if (error) {
-    return console.error('error creating transactions table');
-  }
-  console.log('transactions table created successfully');
-});
+// db.query(buses, (error) => {
+//   if (error) {
+//     return console.error('error creating transactions table');
+//   }
+//   console.log('transactions table created successfully');
+// });
 
 db.end();
