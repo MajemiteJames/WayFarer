@@ -45,7 +45,7 @@ class Bus {
     const text = `INSERT INTO buses(number_plate, manufacturer, model, year, capacity, status)
     VALUES($1, $2, $3, $4, $5, $6) returning * ;
     `;
-    const values = [number_plate, manufacturer, model, year, capacity, 'Available'];
+    const values = [number_plate, manufacturer, model, year, capacity, 'available'];
     try {
       const {
         rows,
