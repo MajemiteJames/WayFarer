@@ -19,7 +19,7 @@ class BookingsController {
   static async bookTrip(req, res) {
     try {
       const query = {
-        text: 'insert into bookings1 (trip_id, seat_number, user_id, created_on) values ($1, $2, $3, $4) returning id, trip_id, seat_number, user_id, created_on',
+        text: 'insert into bookings (trip_id, seat_number, user_id, created_on) values ($1, $2, $3, $4) returning id, trip_id, seat_number, user_id, created_on',
         values: [
           req.body.trip_id,
           req.body.seat_number,
@@ -73,10 +73,10 @@ class BookingsController {
   static async getAllBookings(req, res) {
     try {
       const query = req.user.is_admin === false ? {
-        text: 'select * from bookings1 where user_id = $1',
+        text: 'select * from bookings where user_id = $1',
         values: [req.user.id],
       } : {
-        text: 'SELECT * FROM bookings1',
+        text: 'SELECT * FROM bookings',
       };
       const result = await db.query(query);
       const bookings = result.rows;
@@ -127,10 +127,10 @@ class BookingsController {
   static async deleteABooking(req, res) {
     try {
       const queryDelete = req.user.is_admin === true ? {
-        text: 'DELETE from bookings1 where id = $1',
+        text: 'DELETE from bookings where id = $1',
         values: [req.params.id],
       } : {
-        text: 'DELETE from bookings1 where (user_id, id) = ($1, $2)',
+        text: 'DELETE from bookings where (user_id, id) = ($1, $2)',
         values: [req.user.id, req.params.id],
       };
       await db.query(queryDelete);
