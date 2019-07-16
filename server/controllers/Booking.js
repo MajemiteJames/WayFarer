@@ -47,8 +47,8 @@ class BookingsController {
           bus_id: trip.busId,
           trip_date: trip.trip_date,
           seat_number: req.body.seat_number,
-          first_name: req.user.firstname,
-          last_name: req.user.lastname,
+          first_name: req.user.first_name,
+          last_name: req.user.last_name,
           email: req.user.email,
         },
       });

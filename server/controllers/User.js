@@ -29,7 +29,7 @@ class User {
     email = email.toLowerCase();
 
     const hashedPassword = userAuth.hashPassword(password);
-    const text = `INSERT INTO users(firstname, lastname, email, password, is_admin)
+    const text = `INSERT INTO users(first_name, last_name, email, password, is_admin)
       VALUES($1, $2, $3, $4, $5) returning *;`;
     const values = [first_name, last_name, email, hashedPassword, false];
 
@@ -76,7 +76,7 @@ class User {
     const {
       password,
     } = request.body;
-    const text = 'SELECT id, firstname, lastname, email, is_admin FROM users WHERE email = $1;';
+    const text = 'SELECT id, first_name, last_name, email, is_admin FROM users WHERE email = $1;';
     const passwordText = 'SELECT password FROM users WHERE email = $1;';
 
     let {
@@ -109,8 +109,8 @@ class User {
         data: {
           token,
           id: rows[0].id,
-          firstName: rows[0].firstname,
-          lastName: rows[0].lastname,
+          firstName: rows[0].first_name,
+          lastName: rows[0].last_name,
           email: rows[0].email,
           avatar: rows[0].avatar,
         },
