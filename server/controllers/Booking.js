@@ -27,6 +27,7 @@ class BookingsController {
           createdDate,
         ],
       };
+      console.log(req.body);
       const getTrip = {
         text: 'select * from trips2, buses where trips2.id = $1 AND trips2.busId = buses.id',
         values: [req.body.trip_id],
