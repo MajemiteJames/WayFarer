@@ -24,10 +24,8 @@ class Trips {
 
       return response.status(200).json({
         status: 200,
-        data: [{
+        data:
           rows,
-
-        }],
       });
     } catch (error) {
       return response.status(400).json({
