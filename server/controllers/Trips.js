@@ -76,10 +76,10 @@ class Trips {
     }
 
     status = isEmpty(status) ? 'pending' : status;
-    const text = `INSERT INTO trips(bus_id, origin, destination, fare, status,trip_date) 
+    const text = `INSERT INTO trips(bus_id, origin, destination, fare, trip_date, status) 
     VALUES($1, $2, $3, $4, $5, $6) returning * ;
     `;
-    const values = [bus_id, origin, destination, trip_date, fare, status];
+    const values = [bus_id, origin, destination, fare, trip_date, status];
     try {
       const {
         rows,
@@ -92,8 +92,8 @@ class Trips {
           origin,
           destination,
           fare,
-          status,
           trip_date,
+          status,
         }],
       });
     } catch (error) {
