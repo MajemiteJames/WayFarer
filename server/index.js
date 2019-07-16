@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
 import bodyParser from 'body-parser';
 import router from './routes/index';
+import swaggerDocument from '../wayfarer.json';
 import '@babel/polyfill';
 
 const app = express();
@@ -14,6 +16,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/api/v1/', router);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT || 5000;
 
