@@ -40,7 +40,7 @@ class User {
       const token = userAuth.generateToken(rows[0].id);
 
       return response.status(201).json({
-        status: 201,
+        status: 'success',
         data: [{
           token,
           id: rows[0].id,
@@ -53,7 +53,7 @@ class User {
     } catch (error) {
       if (error.routine === '_bt_check_unique') {
         return response.status(400).json({
-          status: 400,
+          status: 'error',
           error: 'User with that email already exists',
         });
       }
@@ -93,7 +93,7 @@ class User {
 
       if (!rows[0]) {
         return response.status(404).json({
-          status: 404,
+          status: 'success',
           error: 'User with that email does not exist',
         });
       }
@@ -117,7 +117,7 @@ class User {
       });
     } catch (error) {
       return response.status(400).json({
-        status: 400,
+        status: 'error',
         error: error.message,
       });
     }
