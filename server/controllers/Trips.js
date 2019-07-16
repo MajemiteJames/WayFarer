@@ -74,23 +74,23 @@ class Trips {
     }
 
     status = isEmpty(status) ? 'pending' : status;
-    const text = `INSERT INTO trips1(busId, origin, destination, fare, tripdate, status) 
+    const text = `INSERT INTO trips1(busId, origin, destination, tripdate, fare, status) 
     VALUES($1, $2, $3, $4, $5, $6) returning * ;
     `;
-    const values = [bus_id, origin, destination, fare, trip_date, status];
+    const values = [bus_id, origin, destination, trip_date, fare, status];
     try {
       const {
         rows,
       } = await db.query(text, values);
       return response.status(201).json({
-        status: 201,
+        status: 'success',
         data: {
           trip_id: rows[0].id,
           bus_id,
           origin,
           destination,
-          fare,
           trip_date,
+          fare,
           status,
         },
       });
