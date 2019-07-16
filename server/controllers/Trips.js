@@ -74,7 +74,7 @@ class Trips {
     }
 
     status = isEmpty(status) ? 'pending' : status;
-    const text = `INSERT INTO trips(bus_id, origin, destination, fare, trip_date, status) 
+    const text = `INSERT INTO trips1(busId, origin, destination, fare, tripdate, status) 
     VALUES($1, $2, $3, $4, $5, $6) returning * ;
     `;
     const values = [bus_id, origin, destination, fare, trip_date, status];
@@ -118,7 +118,7 @@ class Trips {
       status,
     } = request.body;
 
-    const text = 'UPDATE trips SET status = $1 WHERE id = $2 returning *;';
+    const text = 'UPDATE trips1 SET status = $1 WHERE id = $2 returning *;';
     const values = [status, id];
     try {
       const {
