@@ -31,7 +31,7 @@ class Trips {
       });
     } catch (error) {
       return response.status(400).json({
-        status: 400,
+        status: error,
         error: error.message,
       });
     }
@@ -64,13 +64,13 @@ class Trips {
         || isEmpty(fare)
     ) {
       return response.status(400).json({
-        status: 400,
+        status: 'error',
         message: 'All the fields are required except status field',
       });
     }
     if (!request.user.is_admin) {
       return response.status(401).json({
-        status: 401,
+        status: 'error',
         error: 'You do not have the authority to perform that operation',
       });
     }
@@ -98,7 +98,7 @@ class Trips {
       });
     } catch (error) {
       return response.status(400).json({
-        status: 400,
+        status: 'error',
         error: error.message,
       });
     }
@@ -129,7 +129,7 @@ class Trips {
 
       if (!rows[0]) {
         return response.status(404).json({
-          status: 404,
+          status: 'error',
           error: 'Cannot find that trip',
         });
       }
@@ -144,7 +144,7 @@ class Trips {
       });
     } catch (error) {
       return response.status(400).json({
-        status: 400,
+        status: 'error',
         error: error.message,
       });
     }

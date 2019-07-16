@@ -54,7 +54,7 @@ class BookingsController {
     } catch (error) {
       return res.status(404)
         .json({
-          status: 400,
+          status: 'error',
           error: error.message,
         });
     }
@@ -85,7 +85,7 @@ class BookingsController {
     } catch (error) {
       return res.status(404)
         .json({
-          status: 400,
+          status: 'error',
           error: error.message,
         });
     }
@@ -108,7 +108,7 @@ class BookingsController {
     } catch (error) {
       return res.status(404)
         .json({
-          status: 400,
+          status: 'error',
           error: error.message,
         });
     }
@@ -142,7 +142,7 @@ class BookingsController {
     } catch (error) {
       return res.status(404)
         .json({
-          status: 400,
+          status: 'error',
           error: error.message,
         });
     }

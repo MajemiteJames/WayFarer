@@ -27,7 +27,7 @@ class Bus {
     } = request.body;
     if (isEmpty(number_plate) || isEmpty(capacity)) {
       return response.status(400).json({
-        status: 400,
+        status: 'error',
         message: 'both number_plate and capacity are required',
       });
     }
@@ -38,7 +38,7 @@ class Bus {
     }
     if (!request.user.is_admin) {
       return response.status(401).json({
-        status: 401,
+        status: 'error',
         error: 'You do not have the authority to perform that operation',
       });
     }
@@ -63,7 +63,7 @@ class Bus {
       });
     } catch (error) {
       return response.status(400).json({
-        status: 400,
+        status: 'error',
         error: error.message,
       });
     }
@@ -104,7 +104,7 @@ class Bus {
       });
     } catch (error) {
       return response.status(400).json({
-        status: 400,
+        status: 'error',
         error: error.message,
       });
     }
@@ -151,7 +151,7 @@ class Bus {
       });
     } catch (error) {
       return response.status(400).json({
-        status: 400,
+        status: 'error',
         error: error.message,
       });
     }
