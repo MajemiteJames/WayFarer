@@ -20,10 +20,10 @@ class Trips {
     try {
       const {
         rows,
-      } = await db.query('SELECT * FROM trips;');
+      } = await db.query('SELECT * FROM trips1;');
 
       return response.status(200).json({
-        status: 200,
+        status: 'success',
         data:
           rows,
       });
