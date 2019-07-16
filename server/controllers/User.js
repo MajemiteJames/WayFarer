@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import db from '../models/db';
 import userAuth from './authController';
 import '@babel/polyfill';
@@ -17,8 +18,8 @@ class User {
      */
   static async signUp(request, response) {
     const {
-      firstName,
-      lastName,
+      first_name,
+      last_name,
       password,
     } = request.body;
 
@@ -30,7 +31,7 @@ class User {
     const hashedPassword = userAuth.hashPassword(password);
     const text = `INSERT INTO users(firstname, lastname, email, password, is_admin)
       VALUES($1, $2, $3, $4, $5) returning *;`;
-    const values = [firstName, lastName, email, hashedPassword, false];
+    const values = [first_name, last_name, email, hashedPassword, false];
 
     try {
       const {
@@ -43,8 +44,8 @@ class User {
         data: [{
           token,
           id: rows[0].id,
-          firstName: rows[0].firstname,
-          lastName: rows[0].lastname,
+          first_name: rows[0].firstname,
+          last_name: rows[0].lastname,
           email: rows[0].email,
           is_admin: rows[0].is_admin,
         }],
