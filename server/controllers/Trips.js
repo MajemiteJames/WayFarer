@@ -76,7 +76,7 @@ class Trips {
     }
 
     status = isEmpty(status) ? 'active' : status;
-    const text = `INSERT INTO trips(bus_id, origin, destination, tripDate, fare, status) 
+    const text = `INSERT INTO trips(bus_id, origin, destination, fare, status,trip_date) 
     VALUES($1, $2, $3, $4, $5, $6) returning * ;
     `;
     const values = [bus_id, origin, destination, trip_date, fare, status];
@@ -91,9 +91,9 @@ class Trips {
           bus_id,
           origin,
           destination,
-          trip_date,
           fare,
           status,
+          trip_date,
         }],
       });
     } catch (error) {
