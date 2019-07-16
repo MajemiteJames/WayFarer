@@ -59,7 +59,7 @@ class User {
       }
       return response.status(400).json({
         status: 'error',
-        error: error.message,
+        error: 'Inner Error',
       });
     }
   }
@@ -118,7 +118,7 @@ class User {
     } catch (error) {
       return response.status(400).json({
         status: 'error',
-        error: error.message,
+        error: 'Inner Error',
       });
     }
   }
