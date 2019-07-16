@@ -20,7 +20,7 @@ class Trips {
     try {
       const {
         rows,
-      } = await db.query('SELECT * FROM trips1;');
+      } = await db.query('SELECT * FROM trips2;');
 
       return response.status(200).json({
         status: 'success',
@@ -75,7 +75,7 @@ class Trips {
     }
 
     status = isEmpty(status) ? 'pending' : status;
-    const text = `INSERT INTO trips1(busId, origin, destination, tripdate, fare, status) 
+    const text = `INSERT INTO trips2(busId, origin, destination, tripdate, fare, status) 
     VALUES($1, $2, $3, $4, $5, $6) returning * ;
     `;
     const values = [bus_id, origin, destination, trip_date, fare, status];
@@ -119,7 +119,7 @@ class Trips {
       status,
     } = request.body;
 
-    const text = 'UPDATE trips1 SET status = $1 WHERE id = $2 returning *;';
+    const text = 'UPDATE trips2 SET status = $1 WHERE id = $2 returning *;';
     const values = [status, id];
     try {
       const {
