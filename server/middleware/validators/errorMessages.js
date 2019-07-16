@@ -16,8 +16,8 @@ const displayErrors = (request, response, next) => {
     });
 
     return response.status(400).json({
-      status: 'error',
-      error: 'Not Found',
+      status: 400,
+      error: messages,
     });
   }
   return next();
