@@ -41,14 +41,14 @@ class User {
 
       return response.status(201).json({
         status: 'success',
-        data: [{
+        data: {
           token,
           id: rows[0].id,
           first_name: rows[0].firstname,
           last_name: rows[0].lastname,
           email: rows[0].email,
           is_admin: rows[0].is_admin,
-        }],
+        },
       });
     } catch (error) {
       if (error.routine === '_bt_check_unique') {
@@ -106,14 +106,14 @@ class User {
       }
       return response.status(200).json({
         status: 200,
-        data: [{
+        data: {
           token,
           id: rows[0].id,
           firstName: rows[0].firstname,
           lastName: rows[0].lastname,
           email: rows[0].email,
           avatar: rows[0].avatar,
-        }],
+        },
       });
     } catch (error) {
       return response.status(400).json({
