@@ -86,7 +86,7 @@ class Trips {
       } = await db.query(text, values);
       return response.status(201).json({
         status: 201,
-        data: [{
+        data: {
           trip_id: rows[0].id,
           bus_id,
           origin,
@@ -94,7 +94,7 @@ class Trips {
           fare,
           trip_date,
           status,
-        }],
+        },
       });
     } catch (error) {
       return response.status(400).json({
