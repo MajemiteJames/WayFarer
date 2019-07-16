@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const verifyToken = async (request, response, next) => {
-  const token = request.headers['x-access-token'];
+  const bearerToken = request.headers['x-access-token'] || request.headers.authorization || request.body.token;
+  const token = bearerToken && bearerToken.replace('Bearer ', '');
 
   if (!token) {
     return response.status(401).json({
