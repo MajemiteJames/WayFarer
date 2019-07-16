@@ -85,6 +85,7 @@ class Trips {
       return response.status(201).json({
         status: 'success',
         data: {
+          id: rows[0].id,
           trip_id: rows[0].id,
           bus_id,
           origin,
