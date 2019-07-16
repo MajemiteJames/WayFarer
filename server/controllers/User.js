@@ -58,7 +58,7 @@ class User {
         });
       }
       return response.status(400).json({
-        status: 400,
+        status: 'error',
         error: error.message,
       });
     }
@@ -100,7 +100,7 @@ class User {
 
       if (!userAuth.comparePassword(password, hashedPasswordRow.rows[0].password)) {
         return response.status(401).json({
-          status: 401,
+          status: 'error',
           error: 'Incorrect password',
         });
       }
