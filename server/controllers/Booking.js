@@ -53,10 +53,11 @@ class BookingsController {
         },
       });
     } catch (error) {
+      console.log(error);
       return res.status(404)
         .json({
           status: 'error',
-          error: error.message,
+          errorerror: error.message,
         });
     }
   }
