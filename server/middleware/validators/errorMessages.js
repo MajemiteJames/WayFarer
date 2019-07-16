@@ -16,7 +16,7 @@ const displayErrors = (request, response, next) => {
     });
 
     return response.status(400).json({
-      status: 400,
+      status: 'error',
       errors: messages,
     });
   }
