@@ -75,7 +75,7 @@ class Trips {
       });
     }
 
-    status = isEmpty(status) ? 'active' : status;
+    status = isEmpty(status) ? 'pending' : status;
     const text = `INSERT INTO trips(bus_id, origin, destination, fare, status,trip_date) 
     VALUES($1, $2, $3, $4, $5, $6) returning * ;
     `;
