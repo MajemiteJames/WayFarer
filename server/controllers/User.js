@@ -30,7 +30,7 @@ class User {
     const hashedPassword = userAuth.hashPassword(password);
     const text = `INSERT INTO users(firstname, lastname, email, password, is_admin)
       VALUES($1, $2, $3, $4, $5) returning *;`;
-    const values = [firstName, lastName, email, hashedPassword, true];
+    const values = [firstName, lastName, email, hashedPassword, false];
 
     try {
       const {
