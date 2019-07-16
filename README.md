@@ -26,23 +26,38 @@ Create a .env file with key SECRET set to a string value like so: SECRET=YOUR_SE
 
 # Features
 1.User can sign up.
+
 2. User can sign in.
+
 3. Admin can create a trip.
+
 4. Admin can cancel a trip.
+
 5. Both Admin and Users can see all trips.
+
 6. Users can book a seat on a trip.
+
 7. View all bookings. An Admin can see all bookings, while user can see all of his/her bookings.
+
 8. Users can delete their booking.
 
 # API Endpoints
 POST /api/v1/auth/signup Create user 
+
 POST /api/v1/auth/signin Login a user
+
 POST /api/v1/trips Create a trip
+
 GET /trips/ view all trips
+
 GET /trips/:id> View specific trip
+
 GET /bookings/ View all bookings
+
 Post /api/v1/bookings Create booking
+
 GET /booking/:id get booking by id
+
 DELETE /api/v1/bookings/:id Delete a specific booking
 
 # Contributing
@@ -50,7 +65,10 @@ Any contribution is welcome, please fork the repository and use a feature branch
 
 # Links
 Repository: https://github.com/MajemiteJames/WayFarer
+
 Hosted Heroku App: https://wayfarerurl.herokuapp.com/
+
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2360685
-Author
+
+# Author
 This ADC project belongs to Okoro Majemite James
