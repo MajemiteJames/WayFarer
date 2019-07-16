@@ -9,15 +9,15 @@ import { validationResult } from 'express-validator/check';
  */
 const displayErrors = (request, response, next) => {
   const messages = [];
-  const errors = validationResult(request);
-  if (!errors.isEmpty()) {
-    errors.array().forEach((err) => {
+  const error = validationResult(request);
+  if (!error.isEmpty()) {
+    error.array().forEach((err) => {
       messages.push(err.msg);
     });
 
     return response.status(400).json({
       status: 'error',
-      errors: 'Not Found',
+      error: 'Not Found',
     });
   }
   return next();
