@@ -51,6 +51,7 @@ class Trips {
       trip_date,
       fare,
     } = request.body;
+    console.log(request.body);
     let {
       status,
     } = request.body;
