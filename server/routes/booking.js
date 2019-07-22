@@ -1,6 +1,5 @@
 import express from 'express';
 import BookingsController from '../controllers/Booking';
-import validateInputs from '../middleware/validators/validateBooking';
 import Auth from '../middleware/validators/auth';
 
 const BookingRouter = express.Router();

@@ -31,7 +31,7 @@ class User {
     const hashedPassword = userAuth.hashPassword(password);
     const text = `INSERT INTO users(first_name, last_name, email, password, is_admin)
       VALUES($1, $2, $3, $4, $5) returning *;`;
-    const values = [first_name, last_name, email, hashedPassword, true];
+    const values = [first_name, last_name, email, hashedPassword, false];
 
     try {
       const {
@@ -59,7 +59,7 @@ class User {
       }
       return response.status(400).json({
         status: 'error',
-        error: 'Inner Error',
+        error: error.message,
       });
     }
   }
@@ -118,7 +118,7 @@ class User {
     } catch (error) {
       return response.status(400).json({
         status: 'error',
-        error: 'Inner Error',
+        error: error.message,
       });
     }
   }
